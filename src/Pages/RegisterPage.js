@@ -80,7 +80,7 @@ function RegisterPage() {
               }}
             />
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="confirm password"
               value={cpassword}

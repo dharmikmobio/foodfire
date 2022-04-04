@@ -4,9 +4,8 @@ import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import ProductInfo from './Pages/ProductInfo';
 import CartPage from './Pages/CartPage';
-import ForgotPass from './Pages/ForgotPass';
 import {Route ,BrowserRouter , Routes , Navigate} from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
+
 
 
 import  './Stylesheets/navlayout.css';
@@ -18,7 +17,7 @@ function App() {
   return (
     <>
       <ToastContainer/>
-      <AuthProvider>
+    
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<ProtectedRoutes><HomePage/></ProtectedRoutes> } />
@@ -29,10 +28,10 @@ function App() {
           
           <Route path="/login" exact element={<LoginPage/>} />
           <Route path="/register" exact element={<RegisterPage/>} />
-          <Route path="/forgotPass" component={ForgotPass} />
+          
         </Routes>
       </BrowserRouter>
-      </AuthProvider>
+   
     </>
   );
 }
