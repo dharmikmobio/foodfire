@@ -1,5 +1,5 @@
 import React ,{useContext} from 'react';
-import { auth } from '../fireConfig';
+import { auth } from '../logConfig';
 
 const AuthContext = React.createContext();
 export function AuthProvider({children}){

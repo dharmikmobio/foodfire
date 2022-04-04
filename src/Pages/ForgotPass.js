@@ -52,4 +52,6 @@ export default function ForgotPass() {
       </div>
     </>
   )
+
+
 }
