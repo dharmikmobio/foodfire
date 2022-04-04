@@ -5,12 +5,12 @@ import { FaBars, FaCartPlus,  } from "react-icons/fa";
 
 function Header() {
 //   const { cartItems } = useSelector((state) => state.cartReducer);
-//   const { user } = JSON.parse(localStorage.getItem("currentUser"));
+  const { user } = JSON.parse(localStorage.getItem("currentUser"));
 
-//   const logout = () => {
-//     localStorage.removeItem("currentUser");
-//     window.location.reload();
-//   };
+  const logout = () => {
+    localStorage.removeItem("currentUser");
+    window.location.reload();
+  };
 
   return (
     <div className="header">
@@ -36,7 +36,7 @@ function Header() {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">
-                 
+                  {user.email.substring(0,user.email.length-10)}
                 </Link>
               </li>
               <li className="nav-item">
@@ -45,7 +45,7 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/" >
+                <Link className="nav-link" to="/" onClick={logout}>
                   logout
                 </Link>
               </li>
