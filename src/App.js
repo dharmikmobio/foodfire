@@ -4,6 +4,7 @@ import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import ProductInfo from './Pages/ProductInfo';
 import CartPage from './Pages/CartPage';
+import Forgotpass from './Pages/Forgotpass';
 import {Route ,BrowserRouter , Routes , Navigate} from 'react-router-dom';
 
 
@@ -28,6 +29,7 @@ function App() {
           
           <Route path="/login" exact element={<LoginPage/>} />
           <Route path="/register" exact element={<RegisterPage/>} />
+          <Route path="/forgotpass" exact element={<Forgotpass/>} />
           
         </Routes>
       </BrowserRouter>
