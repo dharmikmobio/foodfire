@@ -4,22 +4,23 @@ import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import ProductInfo from './Pages/ProductInfo';
 import CartPage from './Pages/CartPage';
-import Forgotpass from './Pages/Forgotpass';
+import ForgotPassword from './Components/ForgotPassword';
 import {Route ,BrowserRouter , Routes , Navigate} from 'react-router-dom';
-
-
-
 import  './Stylesheets/navlayout.css';
 import  './Stylesheets/rests.css';
 import  './Stylesheets/register.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {AuthProvider} from "./contexts/AuthContext"
+
+
 function App() {
   return (
     <>
       <ToastContainer/>
     
       <BrowserRouter>
+        <AuthProvider>
         <Routes>
           <Route path="/" exact element={<ProtectedRoutes><HomePage/></ProtectedRoutes> } />
           <Route path="/productinfo" exact element={<ProtectedRoutes><ProductInfo/></ProtectedRoutes>} />
@@ -29,9 +30,9 @@ function App() {
           
           <Route path="/login" exact element={<LoginPage/>} />
           <Route path="/register" exact element={<RegisterPage/>} />
-          <Route path="/forgotpass" exact element={<Forgotpass/>} />
-          
+          <Route path="/forgotpass" exact element={<ForgotPassword/>} />
         </Routes>
+          </AuthProvider>
       </BrowserRouter>
    
     </>
