@@ -60,7 +60,7 @@ const AdminPage = () => {
  
                     <td>{item.name}</td>
                     <td>{item.category}</td>
-                    <td>{item.addres}</td>
+                    <td>{item.address}</td>
                     <td>
                       <FaTrash
                         color="red"
