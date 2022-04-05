@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
-// import { Container } from "react-bootstrap"
+import { Container } from "react-bootstrap"
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -30,7 +30,11 @@ export default function ForgotPassword() {
   return (
     <>
    
-      <Card>
+      <Card  style={{"border" : "none"}}>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "50%" , "width" : "50%" , "border" : "5px solid #0d6efd" , "borderRadius":"8px" , "marginTop":"15%"}}
+    >
         <Card.Body>
           <h2 className="text-center mb-4">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -40,7 +44,7 @@ export default function ForgotPassword() {
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100" style={{"marginTop" : "10px"}}  type="submit">
               Reset Password
             </Button>
           </Form>
@@ -48,10 +52,12 @@ export default function ForgotPassword() {
             <Link to="/login">Login</Link>
           </div>
         </Card.Body>
+      </Container>
       </Card>
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/register">Sign Up</Link>
       </div>
     </>
+
   )
 }
