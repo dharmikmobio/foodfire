@@ -60,6 +60,7 @@ function LoginPage() {
             <hr />
 
             <Link to="/register">Click Here To Register</Link>
+            <Link to="/forgotpass" style={{"float":"right"}}>Forgot Password</Link>
           </div>
         </div>
         <div className="col-md-5 z1">

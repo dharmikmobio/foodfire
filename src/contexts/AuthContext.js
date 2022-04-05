@@ -1,5 +1,7 @@
+// import { async } from "@firebase/util"
 import React, { useContext} from "react"
-import { auth } from "../logConfig"
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
+// import { auth } from '../firebase'
 
 const AuthContext = React.createContext()
 
@@ -8,10 +10,15 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
- 
+
+
+
   function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email)
+    const auth = getAuth()
+    return sendPasswordResetEmail(auth, email)
   }
+
+
 
   const value = {
        

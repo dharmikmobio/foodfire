@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../Components/Layout';
 import {collection, getDocs} from 'firebase/firestore';
 // import {addDoc} from 'firebase/firestore';
-import fireDB from '../fireConfig';
+import { fireDB } from '../firebase';
 // import { fireproducts } from '../firecommerce-products';
 
 
