@@ -3,6 +3,7 @@ import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import ProductInfo from './Pages/ProductInfo';
+import AdminPage from './Pages/AdminPage';
 import CartPage from './Pages/CartPage';
 import ForgotPassword from './Components/ForgotPassword';
 import {Route ,BrowserRouter , Routes , Navigate} from 'react-router-dom';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" exact element={<ProtectedRoutes><HomePage/></ProtectedRoutes> } />
           <Route path="/productinfo" exact element={<ProtectedRoutes><ProductInfo/></ProtectedRoutes>} />
           <Route path="/cart" exact element={<ProtectedRoutes><CartPage/> </ProtectedRoutes>} />
+          <Route path="/addr" exact element={<ProtectedRoutes><AdminPage/> </ProtectedRoutes>} />
 
 
           
