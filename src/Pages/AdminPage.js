@@ -1,12 +1,28 @@
 import React ,{useState,useEffect} from 'react'
 import Layout from "../Components/Layout"
-import { collection ,getDocs } from 'firebase/firestore'
+import { collection, addDoc ,getDocs ,setDoc , doc , deleteDoc } from 'firebase/firestore'
 import { FaEdit, FaTrash } from "react-icons/fa";
 import {fireDB} from '../firebase'
+import {Modal} from "react-bootstrap"
+import { toast } from 'react-toastify';
 
 const AdminPage = () => {
     const [products, setProducts] = useState([]);
     // const [loading, setLoading] = useState(false); 
+
+
+    const [product, setProduct] = useState({
+        name:"",
+        imageURL:"",
+        category:"",
+        address:"",
+    });
+
+    const [show,setShow] = useState(false);
+    const [add, setAdd] = useState(false)
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(()=>{
         getData();
@@ -34,11 +50,57 @@ const AdminPage = () => {
         }
       }
 
+      const editHandler =(item) => {
+          setProduct(item);
+          setShow(true);
+      };
 
+      const updateProduct = async() =>{
+          try {
+              await setDoc(doc(fireDB , "Restaurants" , product.id),product)
+              handleClose()
+              toast.success("Product Updated successfully")
+              window.location.reload()
+          } catch (error) {
+            toast.error("Product Updated Failed")
+          }
+      }
+
+
+      const addHandler = () =>{
+          setAdd(true);
+          handleShow();
+      }
+
+      const addProduct = async () =>{
+          try {
+            await addDoc(collection(fireDB,"Restaurants"), product)
+            handleClose()
+            toast.success("Product Added successfully")
+            window.location.reload()
+          } catch (error) {
+            toast.error("Product Added Failed")
+          }
+      }
+
+      const deleteProduct = async (item) =>{
+          try {
+              await deleteDoc(doc(fireDB , "Restaurants" , item.id));
+              toast.success("Product Deleted successfully");
+              getData()
+          } catch (error) {
+            toast.error("Product Deleted Failed")
+          }
+      }
   return (
     <>
             <Layout>
-                <h3>Products List</h3>
+
+            <div className="d-flex justify-content-between">
+            <h3>Products List</h3>
+            <button onClick={addHandler}>ADD PRODUCT</button>
+            </div>
+            
 
                 <table className="table mt-3">
             <thead>
@@ -65,13 +127,13 @@ const AdminPage = () => {
                       <FaTrash
                         color="red"
                         size={20}
-                        // onClick={() => {
-                        //   deleteProduct(item);
-                        // }}
+                        onClick={() => {
+                          deleteProduct(item);
+                        }}
                       />
 
                       <FaEdit
-                        // onClick={() => editHandler(item)}
+                        onClick={() => editHandler(item)}
                         color="blue"
                         size={20}
                       />
@@ -83,12 +145,65 @@ const AdminPage = () => {
             </tbody>
           </table>
 
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {add === true ? "Add a product" : "Edit Product"}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {" "}
+              <div className="register-form">
+                <input
+                  type="text"
+                  value={product.name}
+                  className="form-control"
+                  placeholder="name"
+                  onChange={(e) =>
+                    setProduct({ ...product, name: e.target.value })
+                  }
+                />
+                <input
+                  type="text"
+                  value={product.imageURL}
+                  placeholder="image url"
+                  className="form-control"
+                  onChange={(e) =>
+                    setProduct({ ...product, imageURL: e.target.value })
+                  }
+                />
+                <input
+                  type="text"
+                  value={product.address}
+                  className="form-control"
+                  placeholder="address"
+                  onChange={(e) =>
+                    setProduct({ ...product, address: e.target.value })
+                  }
+                />
+                <input
+                  type="text"
+                  value={product.category}
+                  className="form-control"
+                  placeholder="category"
+                  onChange={(e) =>
+                    setProduct({ ...product, category: e.target.value })
+                  }
+                />
 
-
-
-
-
-            </Layout>
+                <hr />
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              {/* <button>Close</button> */}
+              {add ? (
+                <button onClick={addProduct}>SAVE</button>
+              ) : (
+                <button onClick={updateProduct}>SAVE</button>
+              )}
+            </Modal.Footer>
+          </Modal>
+  </Layout>
     </>
   )
 }
