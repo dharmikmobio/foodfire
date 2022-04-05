@@ -59,10 +59,10 @@ const AdminPage = () => {
           try {
               await setDoc(doc(fireDB , "Restaurants" , product.id),product)
               handleClose()
-              toast.success("Product Updated successfully")
+              toast.success("Restaurant Updated successfully")
               window.location.reload()
           } catch (error) {
-            toast.error("Product Updated Failed")
+            toast.error("Restaurant Updated Failed")
           }
       }
 
@@ -76,20 +76,20 @@ const AdminPage = () => {
           try {
             await addDoc(collection(fireDB,"Restaurants"), product)
             handleClose()
-            toast.success("Product Added successfully")
+            toast.success("Restaurant Added successfully")
             window.location.reload()
           } catch (error) {
-            toast.error("Product Added Failed")
+            toast.error("Restaurant Added Failed")
           }
       }
 
       const deleteProduct = async (item) =>{
           try {
               await deleteDoc(doc(fireDB , "Restaurants" , item.id));
-              toast.success("Product Deleted successfully");
+              toast.success("Restaurant Deleted successfully");
               getData()
           } catch (error) {
-            toast.error("Product Deleted Failed")
+            toast.error("Restaurant Deleted Failed")
           }
       }
   return (
@@ -97,8 +97,8 @@ const AdminPage = () => {
             <Layout>
 
             <div className="d-flex justify-content-between">
-            <h3>Products List</h3>
-            <button onClick={addHandler}>ADD PRODUCT</button>
+            <h3>Restaurants List</h3>
+            <button onClick={addHandler}>ADD RESTAURANT</button>
             </div>
             
 
@@ -107,6 +107,7 @@ const AdminPage = () => {
               <tr>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Number</th>
                 <th>Category</th>
                 <th>Address</th>
                 <th>Action</th>
@@ -121,6 +122,7 @@ const AdminPage = () => {
                     </td>
  
                     <td>{item.name}</td>
+                    <td>{item.number}</td>
                     <td>{item.category}</td>
                     <td>{item.address}</td>
                     <td>
@@ -161,6 +163,15 @@ const AdminPage = () => {
                   placeholder="name"
                   onChange={(e) =>
                     setProduct({ ...product, name: e.target.value })
+                  }
+                />
+                <input
+                  type="number"
+                  value={product.number}
+                  className="form-control"
+                  placeholder="number"
+                  onChange={(e) =>
+                    setProduct({ ...product, number: e.target.value })
                   }
                 />
                 <input

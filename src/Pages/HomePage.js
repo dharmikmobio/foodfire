@@ -15,8 +15,8 @@ function Homepage() {
    const [products, setProducts] = React.useState([]);
   // const { cartItems } = useSelector((state) => state.cartReducer);
   // const [loading, setLoading] = useState(false);
-  // const [searchKey, setSearchKey] = useState("");
-  // const [filterType, setFilterType] = useState("");
+  const [searchKey, setSearchKey] = React.useState("");
+  const [filterType, setFilterType] = React.useState("");
   // const dispatch = useDispatch();
   // const navigate = useNavigate();
   React.useEffect(() => {
@@ -58,14 +58,14 @@ function Homepage() {
     <Layout>
       <div className="container">
         <div className="d-flex w-50 align-items-center my-3 justify-content-center">
-          {/* <input
+           <input
             type="text"
             value={searchKey}
             onChange={(e) => {
               setSearchKey(e.target.value);
             }}
             className="form-control mx-2"
-            placeholder="search items"
+            placeholder="Search Restaurants"
 
           />
           <select
@@ -75,15 +75,18 @@ function Homepage() {
               setFilterType(e.target.value);
             }}
           >
+            
             <option value="">All</option>
-            <option value="electronics">Electronics</option>
-            <option value="mobiles">Mobiles</option>
-            <option value="fashion">Fashion</option>
+            <option value="surat">Surat</option>
+            <option value="ahmedabad">Ahmedabad</option>
+
           </select>
-        </div> */}
+        </div> 
         </div>
         <div className="row">
-          {products.map((product) => {
+          {products.filter(obj=>obj.name.toLowerCase().includes(searchKey))
+            .filter((obj)=>obj.category.toLowerCase().includes(filterType))
+            .map((product) => {
               return (
                 <div className="col-md-4">
                   <div className="m-2 p-1 product position-relative">
@@ -116,7 +119,7 @@ function Homepage() {
               );
             })}
         </div>
-      </div>
+     
     </Layout>
     </>
   );
