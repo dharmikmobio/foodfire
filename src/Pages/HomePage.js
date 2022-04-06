@@ -108,7 +108,7 @@ function Homepage() {
                     <div className="product-actions">
                       {/* <h2>{product.price} RS/-</h2> */}
                       <div className="d-flex">
-                      <Link className='btn btn-outline-info' to="/dish">Dishes</Link> 
+                      <Link className='btn btn-outline-info' to="/dishres">Dishes</Link> 
                        
                       </div>
                     </div>
