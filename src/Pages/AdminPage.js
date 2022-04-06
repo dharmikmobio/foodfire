@@ -150,7 +150,7 @@ const AdminPage = () => {
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
-                {add === true ? "Add a product" : "Edit Product"}
+                {add === true ? "Add a Restaurant" : "Edit Restaurant"}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
