@@ -4,6 +4,7 @@ import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import ProductInfo from './Pages/ProductInfo';
 import AdminPage from './Pages/AdminPage';
+import Admindish from './Pages/Admindish';
 import CartPage from './Pages/CartPage';
 import ForgotPassword from './Components/ForgotPassword';
 import DishesRes from './DishComponents/DishesRes';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/cart" exact element={<ProtectedRoutes><CartPage/> </ProtectedRoutes>} />
           <Route path="/addr" exact element={<ProtectedRoutes><AdminPage/> </ProtectedRoutes>} />
           <Route path="/dishres" exact element={<ProtectedRoutes><DishesRes/> </ProtectedRoutes>} />
+          <Route path="/addd" exact element={<ProtectedRoutes><Admindish/> </ProtectedRoutes>} />
 
 
           
