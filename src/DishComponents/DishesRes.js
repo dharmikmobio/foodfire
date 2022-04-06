@@ -77,7 +77,9 @@ function DishesRes() {
         </div> 
         </div>
         <div className="row">
-          {products.map((product) => {
+          {products.filter(obj=>obj.dishname.toLowerCase().includes(searchKey))
+            .filter((obj)=>obj.category.toLowerCase().includes(filterType))
+          .map((product) => {
               return (
                 <div className="col-md-4">
                   <div className="m-2 p-1 product position-relative">
