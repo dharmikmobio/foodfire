@@ -6,6 +6,7 @@ import ProductInfo from './Pages/ProductInfo';
 import AdminPage from './Pages/AdminPage';
 import CartPage from './Pages/CartPage';
 import ForgotPassword from './Components/ForgotPassword';
+import Dishes from './DishComponents/Dishes';
 import {Route ,BrowserRouter , Routes , Navigate} from 'react-router-dom';
 import  './Stylesheets/navlayout.css';
 import  './Stylesheets/rests.css';
@@ -27,6 +28,7 @@ function App() {
           <Route path="/productinfo" exact element={<ProtectedRoutes><ProductInfo/></ProtectedRoutes>} />
           <Route path="/cart" exact element={<ProtectedRoutes><CartPage/> </ProtectedRoutes>} />
           <Route path="/addr" exact element={<ProtectedRoutes><AdminPage/> </ProtectedRoutes>} />
+          <Route path="/dish" exact element={<ProtectedRoutes><Dishes/> </ProtectedRoutes>} />
 
 
           

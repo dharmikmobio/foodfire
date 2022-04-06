@@ -1,8 +1,10 @@
 import React from 'react'
 import Layout from '../Components/Layout';
+import { Link } from "react-router-dom";
 import {collection, getDocs} from 'firebase/firestore';
 // import {addDoc} from 'firebase/firestore';
 import { fireDB } from '../firebase';
+
 // import { fireproducts } from '../firecommerce-products';
 
 
@@ -52,6 +54,7 @@ function Homepage() {
   // const addToCart = (product) => {
   //   dispatch({ type: "ADD_TO_CART", payload: product });
   // };
+
 
   return (
     <>
@@ -105,12 +108,7 @@ function Homepage() {
                     <div className="product-actions">
                       {/* <h2>{product.price} RS/-</h2> */}
                       <div className="d-flex">
-                        {/* <button
-                          className="mx-2"
-                          onClick={() => addToCart(product)}
-                        >
-                          ADD TO CART
-                        </button> */}
+                      <Link className='btn btn-outline-info' to="/dish">Dishes</Link> 
                        
                       </div>
                     </div>
