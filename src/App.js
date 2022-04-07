@@ -15,13 +15,16 @@ import  './Stylesheets/register.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {AuthProvider} from "./contexts/AuthContext"
+import { CartContextProvider } from './global/CartContext';
+// import { ProductsContextProvider } from './global/ProductsContext';
 
 
 function App() {
   return (
     <>
       <ToastContainer/>
-    
+      {/* <ProductsContextProvider> */}
+      <CartContextProvider>
       <BrowserRouter>
         <AuthProvider>
         <Routes>
@@ -40,6 +43,8 @@ function App() {
         </Routes>
           </AuthProvider>
       </BrowserRouter>
+      </CartContextProvider>
+      {/* </ProductsContextProvider> */}
    
     </>
   );

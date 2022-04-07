@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Layout from "../Components/Layout"
 import { collection , getDocs} from "firebase/firestore";
 import {fireDB} from "../firebase";
+import { CartContext } from '../global/CartContext.js';
 
 
 function DishesRes() {
 
-  const [products, setProducts] = React.useState([]);
+  const [productss, setProductss] = React.useState([]);
   const [searchKey, setSearchKey] = React.useState("");
   const [filterType, setFilterType] = React.useState("");
-
+  
+  // const {products} = useContext(CartContext);
+  const {dispatch} = useContext(CartContext);
 
     React.useEffect(() => {
     getData();
@@ -20,18 +23,18 @@ function DishesRes() {
     try {
       
       const users = await getDocs(collection(fireDB, "dishes"));
-      const productsArray = [];
+      const productssArray = [];
       users.forEach((doc) => {
         const obj = {
           id: doc.id,
           ...doc.data(),
         };
 
-        productsArray.push(obj);
+        productssArray.push(obj);
         
       });
 
-      setProducts(productsArray);
+      setProductss(productssArray);
     } catch (error) {
       console.log(error);
       
@@ -77,7 +80,7 @@ function DishesRes() {
         </div> 
         </div>
         <div className="row">
-          {products.filter(obj=>obj.dishname.toLowerCase().includes(searchKey))
+          {productss.filter(obj=>obj.dishname.toLowerCase().includes(searchKey))
             .filter((obj)=>obj.category.toLowerCase().includes(filterType))
           .map((product) => {
               return (
@@ -93,15 +96,16 @@ function DishesRes() {
                         />
                       <p>₹{product.price}</p>
                      
+    <button className='btn btn-outline-danger'>ADD TO CART</button>
                       </div>
                     </div>
-<div className="product-actions">
-{/* <h2>{product.price} RS/-</h2> */}
+{/* <div className="product-actions">
+
 <div className="d-flex">
 
 
 </div>
-</div>
+</div> */}
                   </div>
                 </div>
               );
