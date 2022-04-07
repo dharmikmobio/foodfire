@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Layout from "../Components/Layout"
 import { collection , getDocs} from "firebase/firestore";
 import {fireDB} from "../firebase";
-import { CartContext } from '../global/CartContext.js';
+// import { CartContext } from '../global/CartContext.js';
 
 
 function DishesRes() {
@@ -12,7 +12,7 @@ function DishesRes() {
   const [filterType, setFilterType] = React.useState("");
   
   // const {products} = useContext(CartContext);
-  const {dispatch} = useContext(CartContext);
+  // const {dispatch} = useContext(CartContext);
 
     React.useEffect(() => {
     getData();
@@ -96,7 +96,7 @@ function DishesRes() {
                         />
                       <p>₹{product.price}</p>
                      
-    <button className='btn btn-outline-danger'>ADD TO CART</button>
+                   <button className='btn btn-outline-danger'>ADD TO CART</button>
                       </div>
                     </div>
 {/* <div className="product-actions">
