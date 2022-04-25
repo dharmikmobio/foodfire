@@ -1,5 +1,4 @@
 import React ,{useState,useEffect} from 'react'
-import Layout from "../Components/Layout"
 import { collection, addDoc ,getDocs ,setDoc , doc , deleteDoc } from 'firebase/firestore'
 import { FaEdit, FaTrash } from "react-icons/fa";
 import {fireDB} from '../firebase'
@@ -94,7 +93,7 @@ const AdminPage = () => {
       }
   return (
     <>
-            <Layout>
+            {/* <Layout> */}
 
             <div className="d-flex justify-content-between">
             <h3>Restaurants List</h3>
@@ -214,7 +213,7 @@ const AdminPage = () => {
               )}
             </Modal.Footer>
           </Modal>
-  </Layout>
+  {/* </Layout> */}
     </>
   )
 }

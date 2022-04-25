@@ -1,5 +1,4 @@
 import React ,{useState,useEffect} from 'react'
-import Layout from "../Components/Layout"
 import { collection, addDoc ,getDocs ,setDoc , doc , deleteDoc } from 'firebase/firestore'
 import { FaEdit, FaTrash } from "react-icons/fa";
 import {fireDB} from '../firebase'
@@ -16,6 +15,7 @@ const Admindish = () => {
         dishURL:"",
         price:"",
         category:"",
+        amount:"",
     });
 
     const [show,setShow] = useState(false);
@@ -95,7 +95,7 @@ const Admindish = () => {
       }
   return (
     <>
-            <Layout>
+            {/* <Layout> */}
                         
             <div className="d-flex justify-content-between">
             <h3>Dishes List</h3>
@@ -157,6 +157,15 @@ const Admindish = () => {
               {" "}
               <div className="register-form">
                 <input
+                  type="number"
+                  value={1}
+                  className="form-control"
+                  placeholder="amount"
+                  onChange={(e) =>
+                    setProduct({ ...product, amount: e.target.value })
+                  }
+                />
+                <input
                   type="text"
                   value={product.dishname}
                   className="form-control"
@@ -207,7 +216,7 @@ const Admindish = () => {
           </Modal>
 
 
-            </Layout>
+            {/* </Layout> */}
     </>
   )
 }
